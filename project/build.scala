@@ -23,7 +23,7 @@ object BuildSettings extends Build {
   )
 
   lazy val chisel = Project("chisel", file("chisel"), settings = buildSettings)
-  lazy val autopipe = Project("counters", file("."), settings = buildSettings) dependsOn(chisel)
+  lazy val autopipe = Project("autopipe", file("."), settings = buildSettings) dependsOn(chisel)
   lazy val cpu = Project("cpu", file("example"), settings = buildSettings) dependsOn(chisel,autopipe)
 
 }
