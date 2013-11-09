@@ -1,0 +1,5 @@
+QWarning: Qt: Locales not supported on X server
+QWarning: dve.exe: Fatal IO error: client killed
+QFatal: QPaintDevice: Must construct a QApplication before a QPaintDevice
+QWarning: dve.exe: Fatal IO error: client killed
+QWarning: QThread object destroyed while thread is still running.
