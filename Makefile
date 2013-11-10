@@ -1,12 +1,13 @@
 run:
-	cd ../chisel && sbt publish-local
-	sbt run
+	sbt "project cpu" "run --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
 
 clean:
-	rm -f *.cpp
-	rm -f *.h
-	rm -f *.o
+	sbt "project chisel" clean
+	sbt "project cpu" clean
+	rm -f emulator/*.cpp
+	rm -f emulator/*.h
+	rm -f emulator/*.o
 	rm -rf target
-	rm Hello
+	rm -f emulator/Hello
 	rm *.vpd
 	rm *.vcd
