@@ -1,0 +1,5 @@
+*~
+emulator/*
+target/*
+DVEfiles/*
+*.vcd

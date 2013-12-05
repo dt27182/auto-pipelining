@@ -1,5 +1,5 @@
 run:
-	sbt "project cpu" "run --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
+	sbt "project cpu" "run --autoPipe --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
 
 clean:
 	sbt "project chisel" clean
