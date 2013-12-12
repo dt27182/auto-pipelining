@@ -1,6 +1,7 @@
 run:
-	sbt "project cpu" "run --autoPipe --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
-
+	sbt "project cpu" "run -ctest --autoPipe --targetDir /home/cc/cs250/fa13/class/cs250-ao/auto-pipelining/emulator"
+build:
+	sbt "project cpu" "run -vbuild --autoPipe --targetDir /home/cc/cs250/fa13/class/cs250-ao/auto-pipelining/vlsi/build/generated-src"
 clean:
 	sbt "project chisel" clean
 	sbt "project cpu" clean

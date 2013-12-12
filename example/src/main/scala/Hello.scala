@@ -389,8 +389,11 @@ class HelloTests(c: Hello) extends Tester(c, Array(c.io)) {
 
 object Hello {
   def main(args: Array[String]): Unit = {
-    //val args = Array("--backend", "c", "--genHarness", "--compile", "--test", "--vcd", "--debug") ++ 
-    chiselMainTest(args ++ Array("--backend", "c", "--genHarness", "--compile", "--test", "--vcd", "--debug"), () => Module(new Hello())) {
-      c => new HelloTests(c) }
+    if(args(0) == "-ctest"){
+      chiselMainTest(args.slice(1, args.length) ++ Array("--backend", "c", "--genHarness", "--compile", "--test", "--vcd", "--debug"), () => Module(new Hello())) {
+        c => new HelloTests(c) }
+    } else if(args(0) == "-vbuild"){
+      chiselMain(args.slice(1,args.length) ++ Array("--backend", "v"), () => Module(new Hello()))
+    }
   }
 }
