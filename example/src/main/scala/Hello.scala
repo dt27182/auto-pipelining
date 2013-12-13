@@ -394,6 +394,8 @@ object Hello {
         c => new HelloTests(c) }
     } else if(args(0) == "-vbuild"){
       chiselMain(args.slice(1,args.length) ++ Array("--backend", "v"), () => Module(new Hello()))
+    } else if(args(0) == "-backannotation"){
+      chiselMain(args.slice(1,args.length) ++ Array("--backend", "MyBackend.MyBackend"), () => Module(new Hello()))
     }
   }
 }

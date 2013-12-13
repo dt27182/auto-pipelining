@@ -1,7 +1,10 @@
-run:
-	sbt "project cpu" "run -ctest --autoPipe --targetDir /home/cc/cs250/fa13/class/cs250-ao/auto-pipelining/emulator"
+run: build
+	sbt "project cpu" "run -backannotation --autoPipe --targetDir generated"
 build:
-	sbt "project cpu" "run -vbuild --autoPipe --targetDir /home/cc/cs250/fa13/class/cs250-ao/auto-pipelining/vlsi/build/generated-src"
+	sbt "project cpu" "run -vbuild --targetDir generated"
+dc:
+	mkdir -p generated/dc-syn
+	cd generated/dc-syn; dc_shell -64bit -f gentcl.tcl
 clean:
 	sbt "project chisel" clean
 	sbt "project cpu" clean

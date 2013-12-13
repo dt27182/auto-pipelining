@@ -1,5 +1,7 @@
 *~
 emulator/*
-target/*
-DVEfiles/*
+DVEfiles
 *.vcd
+target/*
+example/target/*
+generated/*
