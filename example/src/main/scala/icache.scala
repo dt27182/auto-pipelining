@@ -1,4 +1,4 @@
-package Hello 
+/*package Hello 
  
 import Chisel._
 
@@ -42,6 +42,29 @@ class TICache() extends TransactionalComponent
     imem(14) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
     imem(15) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
   }
+  override val req_ready = Bool(true)
+  val mem_addr = io.req.bits
+  acceptBackPressure = false
+  io.resp := imem(mem_addr)
+  override val resp_valid = Bool(true)
+
+}*/
+package Hello 
+ 
+import Chisel._
+
+class TICacheIo extends TransactionalBundle
+{
+  override val req = new ValidIO(Bits(width=4)).flip()
+  override val resp = Bits(OUTPUT, 32)
+}
+
+class TICache() extends TransactionalComponent
+{
+  val io = new TICacheIo()
+  val num_lines = 16
+  val imem = Mem(Bits(width = 32), num_lines)
+
   override val req_ready = Bool(true)
   val mem_addr = io.req.bits
   acceptBackPressure = false
