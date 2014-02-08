@@ -1,6 +1,10 @@
-run:
-	sbt "project cpu" "run --autoPipe --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
-
+run: build
+	sbt "project cpu" "run -backannotation --autoPipe --targetDir generated"
+build:
+	sbt "project cpu" "run -vbuild --targetDir generated"
+dc:
+	mkdir -p generated/dc-syn
+	cd generated/dc-syn; dc_shell -64bit -f gentcl.tcl
 clean:
 	sbt "project chisel" clean
 	sbt "project cpu" clean

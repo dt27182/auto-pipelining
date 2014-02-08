@@ -4,6 +4,7 @@ import Keys._
 //import extracted._
 
 object BuildSettings extends Build {
+/*
   val buildOrganization = "berkeley"
   val buildVersion = "1.0"
   val buildScalaVersion = "2.10.2"
@@ -21,9 +22,9 @@ object BuildSettings extends Build {
       "scct-github-repository" at "http://mtkopone.github.com/scct/maven-repo"
     )
   )
-
-  lazy val chisel = Project("chisel", file("chisel"), settings = buildSettings)
-  lazy val autopipe = Project("autopipe", file("."), settings = buildSettings) dependsOn(chisel)
-  lazy val cpu = Project("cpu", file("example"), settings = buildSettings) dependsOn(chisel,autopipe)
+*/
+  lazy val chisel = Project("chisel", file("chisel"))
+  lazy val autopipe = Project("autopipe", file(".")).dependsOn(chisel)
+  lazy val cpu = Project("cpu", file("example")).dependsOn(chisel,autopipe)
 
 }
