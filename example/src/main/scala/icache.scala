@@ -35,7 +35,7 @@ class TICache() extends TransactionalComponent
     imem(7) := Cat(Bits(9,17), Bits(6,3), Bits(0,4), Bits(15,4), Bits(0,4)) //jump to PC=9
     imem(8) := Cat(Bits(1,17), Bits(2,3), Bits(4,4), Bits(15,4), Bits(4,4)) //r4 = r4 + 1
     imem(9) := Cat(Bits(2,17), Bits(2,3), Bits(4,4), Bits(15,4), Bits(4,4)) //r4 = r4 + 2
-    imem(10) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
+    imem(10) := Cat(Bits(10,17), Bits(6,3), Bits(0,4), Bits(15,4), Bits(0,4)) //jump to PC = 10(stop execution here)
     imem(11) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
     imem(12) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
     imem(13) := Cat(Bits(0,17), Bits(5,3), Bits(0,4), Bits(15,4), Bits(0,4)) //r0 = r0 + 0
