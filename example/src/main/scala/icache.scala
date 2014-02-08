@@ -1,4 +1,4 @@
-/*package Hello 
+package Hello 
  
 import Chisel._
 
@@ -48,7 +48,8 @@ class TICache() extends TransactionalComponent
   io.resp := imem(mem_addr)
   override val resp_valid = Bool(true)
 
-}*/
+}
+/*
 package Hello 
  
 import Chisel._
@@ -71,4 +72,4 @@ class TICache() extends TransactionalComponent
   io.resp := imem(mem_addr)
   override val resp_valid = Bool(true)
 
-}
+}*/
