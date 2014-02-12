@@ -1,5 +1,5 @@
 test:
-	sbt "project cpu" "run -ctest --autoPipe --targetDir /home/eecs/wenyu/auto-pipelining/fsm-test/emulator"
+	sbt "project cpu" "run -ctest --autoPipe --targetDir emulator"
 run: build
 	sbt "project cpu" "run -backannotation --autoPipe --targetDir generated"
 build:
