@@ -228,8 +228,8 @@ class PC_Wrapper(top: Module) extends Module {
   when(io.isJmp){
     pc_reg := io.jmpTarget
   }
-  top.setRegReadStage(pc_reg.asInstanceOf[Data].comp.asInstanceOf[Reg], 0)
-  top.setRegWriteStage(pc_reg.asInstanceOf[Data].comp.asInstanceOf[Reg], 2)
+  //top.setRegReadStage(pc_reg.asInstanceOf[Data].comp.asInstanceOf[Reg], 0)
+  //top.setRegWriteStage(pc_reg.asInstanceOf[Data].comp.asInstanceOf[Reg], 2)
   top.speculate(pc_reg.comp.asInstanceOf[Reg], pc_spec)
   top.setStage(pc_spec, 0)
 }
@@ -262,7 +262,7 @@ class RegFile_Wrapper(top: Module) extends Module {
   when(io.write_en1){
     regfile.write(io.write_addr1, io.write_data1, 1)
   }
-  top.setTmemWriteStage(regfile, 3)
+  //top.setTmemWriteStage(regfile, 3)
   top.addForwardedMemReadPort(regfile, regfile.io.reads(0))
   top.addForwardedMemReadPort(regfile, regfile.io.reads(1))
 
@@ -378,10 +378,10 @@ class Hello extends Module {
   //limit automatic pipelining to this Component(the dpath)
   Module.pipelineComponents += this
   
-  this.setDecoupledIOStage(io.read_addr.asInstanceOf[DecoupledIO[Data]], 2)
-  this.setDecoupledIOStage(io.read_data.asInstanceOf[DecoupledIO[Data]], 2)
+  //this.setDecoupledIOStage(io.read_addr.asInstanceOf[DecoupledIO[Data]], 2)
+  //this.setDecoupledIOStage(io.read_data.asInstanceOf[DecoupledIO[Data]], 2)
 
-  //this.setStageNum(4)
+  this.setStageNum(4)
 
 }
 
