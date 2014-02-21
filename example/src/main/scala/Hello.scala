@@ -253,15 +253,27 @@ class RegFile_Wrapper(top: Module) extends Module {
   val regfile = Module(new TransactionMem(16, 3, 3, Array(0,1,2), 2, 1, Array(0, 0))(Bits(width = 32)))
   val rs1_data = UInt()
   val rs2_data = UInt()
-  io.read_data0 := regfile.read(io.read_addr0, Bool(true), 0)
-  io.read_data1 := regfile.read(io.read_addr1, Bool(true), 1)
-  io.read_data2 := regfile.read(io.read_addr2, Bool(true), 2)
-  when(io.write_en0){
-    regfile.write(io.write_addr0, io.write_data0, 0)
-  }
-  when(io.write_en1){
-    regfile.write(io.write_addr1, io.write_data1, 1)
-  }
+  
+  io.read_data0 := regfile.io.reads(0).dat
+  regfile.io.reads(0).adr := io.read_addr0
+  regfile.io.reads(0).is := Bool(true)
+
+  io.read_data1 := regfile.io.reads(1).dat
+  regfile.io.reads(1).adr := io.read_addr1
+  regfile.io.reads(1).is := Bool(true)
+
+  io.read_data2 := regfile.io.reads(2).dat
+  regfile.io.reads(2).adr := io.read_addr2
+  regfile.io.reads(2).is := Bool(true)
+
+  regfile.io.writes(0).is := io.write_en0
+  regfile.io.writes(0).adr := io.write_addr0
+  regfile.io.writes(0).dat := io.write_data0
+
+  regfile.io.writes(1).is := io.write_en1
+  regfile.io.writes(1).adr := io.write_addr1
+  regfile.io.writes(1).dat := io.write_data1
+
   //top.setTmemWriteStage(regfile, 3)
   top.addForwardedMemReadPort(regfile, regfile.io.reads(0))
   top.addForwardedMemReadPort(regfile, regfile.io.reads(1))
